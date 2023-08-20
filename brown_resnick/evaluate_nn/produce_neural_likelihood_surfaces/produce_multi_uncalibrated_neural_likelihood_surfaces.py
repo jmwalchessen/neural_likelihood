@@ -62,7 +62,6 @@ def produce_psi_field_for_multiple_realizations(possible_ranges, possible_smooth
 
         image = image_realizations[i,:,:]
         multi_psi_field = (multi_psi_field + produce_psi_field(possible_ranges, possible_smooths, image, n))
-        print(multi_psi_field)
 
     return multi_psi_field
 
@@ -73,7 +72,7 @@ multi_number = 5
 image_size = 25
 number_of_reps = 200
 image_name = str(image_size) + "_by_" + str(image_size)
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/multi/" + str(multi_number) + "/reps/" + str(number_of_reps) + 
                   "/evaluation_images_10_by_10_density_" + image_name + "_multi_" + str(multi_number)
@@ -86,10 +85,10 @@ number_of_parameters = 100
 
 
 #Load the nn
-json_file_name = (local_folder + "nn/" + image_name + "/" + version +
+json_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
 "/model/br_" + image_name + "_" + version + "_nn.json")
 
-weights_file_name = (local_folder + "nn/" + image_name + "/" + version +
+weights_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
 "/model/br_" + image_name + "_" + version + "_nn_weights.h5")
 
 json_file = open(json_file_name, 'r')

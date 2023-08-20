@@ -50,7 +50,7 @@ def produce_psi_field(possible_ranges, possible_smooths, image, n):
 n = 25
 image_name = str(n) + "_by_" + str(n)
 number_of_replications = 200
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/single/reps/" + str(number_of_replications) + "/evaluation_images_10_by_10_density_" 
                   + image_name + "_" + str(number_of_replications) + ".npy")
@@ -60,11 +60,11 @@ possible_smooths = [.05*i for i in range(1, 41)]
 number_of_parameters = 100
 
 #Load the nn
-json_file_name = (local_folder + "nn/" + image_name + "/" + version +
-"/model/gp_" + image_name + "_" + version + "_nn.json")
+json_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
+"/model/br_" + image_name + "_" + version + "_nn.json")
 
-weights_file_name = (local_folder + "nn/" + image_name + "/" + version +
-"/model/gp_" + image_name + "_" + version + "_nn_weights.h5")
+weights_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
+"/model/br_" + image_name + "_" + version + "_nn_weights.h5")
 
 json_file = open(json_file_name, 'r')
 loaded_model_json = json_file.read()

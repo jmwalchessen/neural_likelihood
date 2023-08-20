@@ -69,7 +69,7 @@ n = 25
 multi_number = 5
 image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/multi/5/reps/200/evaluation_images_10_by_10_density_25_by_25_multi_5_200.npy")
 evaluation_images = np.load(data_file_name)

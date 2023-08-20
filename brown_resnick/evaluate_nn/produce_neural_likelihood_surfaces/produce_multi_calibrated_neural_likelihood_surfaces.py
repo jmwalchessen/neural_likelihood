@@ -74,7 +74,7 @@ def produce_calibrated_psi_field_for_multiple_realizations(possible_ranges, poss
 
     for i in range(0, multi_number):
 
-        image = image_realizations[i,:,:,:]
+        image = image_realizations[i,:,:]
         multi_psi_field = (multi_psi_field + produce_calibrated_psi_field(possible_ranges, possible_smooths, image, n))
 
     return multi_psi_field
@@ -86,7 +86,7 @@ multi_number = 5
 image_name = str(n) + "_by_" + str(n)
 number_of_parameters = 100
 number_of_reps = 200
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/multi/"+ str(multi_number) + "/reps/" + str(number_of_reps) + 
                   "/evaluation_images_10_by_10_density_" + image_name + "_multi_" + 
@@ -97,10 +97,10 @@ possible_smooths = [.05*i for i in range(1, 41)]
 
 
 #Load the nn
-json_file_name = (local_folder + "nn/" + image_name + "/" + version +
+json_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
 "/model/br_" + image_name + "_" + version + "_nn.json")
 
-weights_file_name = (local_folder + "nn/" + image_name + "/" + version +
+weights_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
 "/model/br_" + image_name + "_" + version + "_nn_weights.h5")
 
 json_file = open(json_file_name, 'r')
@@ -110,7 +110,7 @@ parameter_classifier = keras.models.model_from_json(loaded_model_json)
 parameter_classifier.load_weights(weights_file_name)
 
 #load the logistic regression model for calibration
-logistic_regression_model_file_name = (local_folder + "evaluate_nn/calibration/model/" 
+logistic_regression_model_file_name = (local_folder + "nn/calibration/model/" 
                                        + image_name + "/" + version + 
                                        "/logistic_regression_model_wtih_logit_transformation.pkl")
 with open(logistic_regression_model_file_name, 'rb') as f:
@@ -124,10 +124,7 @@ for i in range(0, number_of_parameters):
     for j in range(0, number_of_reps):
 
         current_image = evaluation_images[i,j,:,:]
-        calibrated_psi_fields[i,j,:,:] = produce_calibrated_psi_field_for_multiple_realizations(possible_ranges,
-                                                                                                possible_smooths, 
-                                                                                                current_image, 
-                                                                                                n, multi_number)
+        calibrated_psi_fields[i,j,:,:] = produce_calibrated_psi_field_for_multiple_realizations(possible_ranges, possible_smooths, current_image, n, multi_number)
 
 
 calibrated_psi_field_file = (local_folder + "/evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + 

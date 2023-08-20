@@ -66,7 +66,7 @@ n = 25
 image_name = str(n) + "_by_" + str(n)
 number_of_parameters = 100
 number_of_reps = 200
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/single/reps/" + str(number_of_reps) + "/evaluation_images_10_by_10_density_" + 
                   image_name + "_" + str(number_of_reps) + ".npy")
@@ -75,10 +75,10 @@ possible_ranges = [.05*i for i in range(1, 41)]
 possible_smooths = [.05*i for i in range(1, 41)]
 
 #Load the nn
-json_file_name = (local_folder + "nn/" + image_name + "/" + version +
+json_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
 "/model/br_" + image_name + "_" + version + "_nn.json")
 
-weights_file_name = (local_folder + "nn/" + image_name + "/" + version +
+weights_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
 "/model/br_" + image_name + "_" + version + "_nn_weights.h5")
 
 json_file = open(json_file_name, 'r')
@@ -88,7 +88,7 @@ parameter_classifier = keras.models.model_from_json(loaded_model_json)
 parameter_classifier.load_weights(weights_file_name)
 
 #load the logistic regression model
-logistic_regression_model_file_name = (local_folder + "evaluate_nn/calibration/model/" 
+logistic_regression_model_file_name = (local_folder + "nn/calibration/model/" 
                                        + image_name + "/" + version + 
                                        "/logistic_regression_model_wtih_logit_transformation.pkl")
 with open(logistic_regression_model_file_name, 'rb') as f:

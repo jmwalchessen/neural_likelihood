@@ -13,13 +13,13 @@ if len(physical_devices) > 0:
 image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
 version = "final_version"
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process"
 
 json_file_name = (local_folder + "/nn/models/" + image_name + "/" + version + 
                   "/model/gp_" + image_name + "_nn.json")
 
 weights_file_name = (local_folder + "/nn/models/" + image_name + "/" + version +
-                      "/gp_" + image_name + "_" + version + "_nn_weights.h5")
+                      "/model/gp_" + image_name + "_" + version + "_nn_weights.h5")
 
 json_file = open(json_file_name, 'r')
 loaded_model_json = json_file.read()

@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 
 #First load training data
 image_size = 25
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process"
 image_name = str(image_size) + "_by_" + str(image_size)
 version = "final_version"
 

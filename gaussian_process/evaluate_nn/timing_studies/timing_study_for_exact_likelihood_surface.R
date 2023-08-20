@@ -118,7 +118,7 @@ compute_cholesky_log_likelihood_field_with_parallelization <- function(irep, ipr
 np <- import("numpy")
 image_size <- 25
 image_name <- paste(paste(as.character(image_size), "by", sep = "_"), as.character(image_size), sep = "_")
-local_folder <- "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process"
+local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process"
 numpy_file_name <- paste(paste(paste(paste(local_folder, "evaluate_nn/generate_data/data", sep = "/"), image_name, sep = "/"), 
                                "single/reps/200", sep = "/"), "evaluation_images_10_by_10_density_25_by_25_200.npy", sep = "/")
 

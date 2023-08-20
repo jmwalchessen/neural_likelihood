@@ -8,7 +8,7 @@ from tensorflow import keras
 image_size = 25
 version = "final_version"
 image_name = str(image_size) + "_by_" + str(image_size)
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/"
 train_or_test = "test"
 number_of_parameters = 300
 number_of_reps = 50

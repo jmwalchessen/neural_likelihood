@@ -13,13 +13,13 @@ if len(physical_devices) > 0:
 image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
 version = "final_version"
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
 
-json_file_name = (local_folder + "/nn/" + image_name + "/" + version + 
-                  "/model/br_" + image_name + "_nn.json")
+json_file_name = (local_folder + "/nn/models/" + image_name + "/" + version + 
+                  "/model/br_" + image_name + "_" + version + "_nn.json")
 
-weights_file_name = (local_folder + "/nn/" + image_name + "/" + version +
-                      "/br_" + image_name + "_" + version + "_nn_weights.h5")
+weights_file_name = (local_folder + "/nn/models/" + image_name + "/" + version +
+                      "/model/br_" + image_name + "_" + version + "_nn_weights.h5")
 
 json_file = open(json_file_name, 'r')
 loaded_model_json = json_file.read()
@@ -99,7 +99,7 @@ n = 25
 total_number_of_reps = 200
 evaluation_data_file_name = (local_folder + "/evaluate_nn/generate_data/data/" + image_name + 
                   "/single/reps/" + str(total_number_of_reps) + "/evaluation_images_10_by_10_density_"
-                  + image_name + str(total_number_of_reps) + ".npy")
+                  + image_name + "_" + str(total_number_of_reps) + ".npy")
 evaluation_data = np.load(evaluation_data_file_name)
 possible_length_scales = [.05*i for i in range(1, 41)]
 possible_variances = [.05*i for i in range(1, 41)]
@@ -138,7 +138,7 @@ for irep in range(number_of_reps):
 
     possible_variances = [.05*i for i in range(1,41)]
     ray.init()
-    inputs = [(.05*i, possible_variances, evaluation_data[ipred,irep,:,:,:]) for i in range(1, 41)]
+    inputs = [(.05*i, possible_variances, evaluation_data[ipred,irep,:,:]) for i in range(1, 41)]
     start = time.time()
     output = produce_parallelized_unvectorized_neural_likelihood_surface(
         inner_for_loop_for_unvectorized_neural_likelihood_surface, inputs)
@@ -168,7 +168,7 @@ def produce_parallelized_vectorized_neural_likelihood_surfaces(operation, inputs
 irep = 33
 
 ray.init()
-inputs = [(evaluation_data[ipred,irep,:,:,:]) for irep in range(0, number_of_reps)]
+inputs = [(evaluation_data[ipred,irep,:,:]) for irep in range(0, number_of_reps)]
 output = produce_parallelized_vectorized_neural_likelihood_surfaces(time_vectorized_neural_likelihood_surface, inputs)
 ray.shutdown()
 

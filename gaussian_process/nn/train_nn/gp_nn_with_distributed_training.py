@@ -8,7 +8,7 @@ from keras import layers, models, Input
 import os
 import json
 
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process/nn/models"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/nn/models"
 image_size = 25
 parameter_dimension = 2
 train_total_number_of_parameters = 3000

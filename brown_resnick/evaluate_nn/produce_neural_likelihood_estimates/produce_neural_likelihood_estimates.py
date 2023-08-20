@@ -30,7 +30,7 @@ image_name = (str(image_size) + "_by_" + str(image_size))
 version = "final_version"
 multi_number = 5
 
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 multi_psi_fields_file = (local_folder + "evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + "/" + 
                          version + "/uncalibrated/multi/" + str(multi_number) + "/reps/" + str(number_of_reps) + 
                          "/uncalibrated_neural_likelihood_surfaces_10_by_10_density_" + image_name +

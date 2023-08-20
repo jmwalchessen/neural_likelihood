@@ -4,7 +4,7 @@ import numpy as np
 
 image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
-local_folder = "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/"
 ll_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                 "/multi/5/reps/200/evaluation_ll_fields_10_by_10_density_" + image_name + "_multi_5_200.npy")
 ll_fields = np.load(ll_file_name)

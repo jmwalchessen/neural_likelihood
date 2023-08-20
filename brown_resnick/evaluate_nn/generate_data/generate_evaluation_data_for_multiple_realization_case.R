@@ -25,15 +25,15 @@ number_of_parameters <- 100
 number_of_reps <- 200
 multiple_realizations_number <- 5
 
-local_folder <- "/home/juliatest/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick"
+local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
 
 data_x_test <- array(NA, dim = c(number_of_parameters, number_of_reps, multiple_realizations_number, n, n))
 image_name <- paste(paste(as.character(n), "by", sep = "_"), as.character(n), sep = "_")
 data_file_name <- paste(paste(paste(paste(paste(paste(local_folder, "evaluate_nn/generate_data/data", image_name, sep = "/"), "multi/reps/200", sep = "/"), 
-                                          "evaluation_images_10_by_10_density1", sep = "/"), image_name, sep = "_"), as.character(number_of_reps), 
+                                          "evaluation_images_10_by_10_density", sep = "/"), image_name, sep = "_"), as.character(number_of_reps), 
                               sep = "_"), "npy", sep = ".")
 parameters_file_name <- paste(paste(paste(paste(paste(paste(local_folder, "evaluate_nn/generate_data/data", image_name, sep = "/"), "multi/reps/200", sep = "/"), 
-                                                "evaluation_parameters_10_by_10_density1", sep = "/"), image_name, sep = "_"), as.character(number_of_reps), 
+                                                "evaluation_parameters_10_by_10_density", sep = "/"), image_name, sep = "_"), as.character(number_of_reps), 
                                     sep = "_"), "npy", sep = ".")
 
 for(ipred in 1:nrow(parameter_matrix))
