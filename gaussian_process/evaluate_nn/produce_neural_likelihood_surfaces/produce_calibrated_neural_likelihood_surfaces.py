@@ -65,12 +65,12 @@ def produce_calibrated_psi_field(possible_length_scales, possible_variances, ima
 n = 25
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + str(n) + "_by_" + str(n) + 
-                  "/single/reps/200/evaluation_images_10_by_10_density_25_by_25_200.npy")
+                  "/single/reps/200/evaluation_images_9_by_9_density_25_by_25_200.npy")
 evaluation_images = np.load(data_file_name)
 possible_length_scales = [.05*i for i in range(1, 41)]
 possible_variances = [.05*i for i in range(1, 41)]
 
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 200
 
 image_size = 25
@@ -90,9 +90,9 @@ parameter_classifier = keras.models.model_from_json(loaded_model_json)
 parameter_classifier.load_weights(weights_file_name)
 
 #load the logistic regression model
-logistic_regression_model_file_name = (local_folder + "nn/calibration/models/" 
+logistic_regression_model_file_name = (local_folder + "nn/calibration/model/" 
                                        + image_name + "/" + version + 
-                                       "/logistic_regression_model_wtih_logit_transformation.pkl")
+                                       "/logistic_regression_model_with_logit_transformation.pkl")
 with open(logistic_regression_model_file_name, 'rb') as f:
     logistic_regression_model = pickle.load(f)
 
@@ -108,5 +108,5 @@ for i in range(0, number_of_parameters):
 
 
 calibrated_psi_field_file = ("data/" + image_name + "/" + version +
-"/calibrated/single/reps/200/calibrated_neural_likelihood_surfaces_10_by_10_density_" + image_name + "_image_200.npy")
+"/calibrated/single/reps/200/calibrated_neural_likelihood_surfaces_9_by_9_density_" + image_name + "_image_200.npy")
 np.save(calibrated_psi_field_file, calibrated_psi_fields)

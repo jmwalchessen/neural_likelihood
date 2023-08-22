@@ -16,7 +16,7 @@ version = "final_version"
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process"
 
 json_file_name = (local_folder + "/nn/models/" + image_name + "/" + version + 
-                  "/model/gp_" + image_name + "_nn.json")
+                  "/model/gp_" + image_name + "_" + version + "_nn.json")
 
 weights_file_name = (local_folder + "/nn/models/" + image_name + "/" + version +
                       "/model/gp_" + image_name + "_" + version + "_nn_weights.h5")
@@ -97,15 +97,15 @@ def produce_vectorized_neural_likelihood_surface(possible_length_scales, possibl
 #Load evaluation data. Timing study 
 n = 25
 evaluation_data_file_name = (local_folder + "/evaluate_nn/generate_data/data/" + image_name + 
-                  "/single/reps/200/evaluation_images_10_by_10_density_25_by_25_200.npy")
+                  "/single/reps/200/evaluation_images_9_by_9_density_25_by_25_200.npy")
 evaluation_data = np.load(evaluation_data_file_name)
 possible_length_scales = [.05*i for i in range(1, 41)]
 possible_variances = [.05*i for i in range(1, 41)]
 
 #Time how long it takes to generate each neural likelihood surface for 50 realizations.
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 50
-ipred = 33
+ipred = 30
 
 time_array = np.zeros((number_of_reps))
 
@@ -163,7 +163,7 @@ def time_vectorized_neural_likelihood_surface(image):
 def produce_parallelized_vectorized_neural_likelihood_surfaces(operation, inputs):
    return ray.get([operation.remote(input) for input in inputs])
 
-irep = 33
+irep = 50
 
 ray.init()
 inputs = [(evaluation_data[ipred,irep,:,:,:]) for irep in range(0, number_of_reps)]
@@ -173,5 +173,5 @@ ray.shutdown()
 output = (np.asarray(output))
 vectorized_time_array_filename = (local_folder + "/evaluate_nn/timing_studies/data/"
                                   + image_name + 
-                                  "/vectorized_neural_likelihood_surface_time_with_parallelization_on_laptop_33.npy")
+                                  "/vectorized_neural_likelihood_surface_time_with_parallelization_on_laptop_30.npy")
 np.save(vectorized_time_array_filename, output)

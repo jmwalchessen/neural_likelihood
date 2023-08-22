@@ -150,7 +150,7 @@ generate_data_per_parameter_pair <- function(index, grid_dataframe, number_of_re
                            "seed" = seed_value)
   }
   
-  file_name <- paste(paste("data/25_by_25/ll/multi/200/reps/5/data_10_by_10_density_25_by_25_image_multi_5", as.character(index), sep = "_"), "json", sep = ".")
+  file_name <- paste(paste("data/25_by_25/ll/multi/200/reps/5/data_9_by_9_density_25_by_25_image_multi_5", as.character(index), sep = "_"), "json", sep = ".")
   write_json(data_list, file_name)
 }
 
@@ -165,12 +165,12 @@ possible_length_scales <- seq(.05, 2, .05)
 
 number_of_replicates <- 200
 multi_number <- 5
-number_of_parameters <- 100
-length_scale_test <- seq(.2, 2, .2)
-variance_test <- seq(.2, 2, .2)
+number_of_parameters <- 81
+length_scale_test <- seq(.2, 1.8, .2)
+variance_test <- seq(.2, 1.8, .2)
 data_y = cbind(expand.grid(length_scale_test, variance_test)$Var1,
                expand.grid(length_scale_test, variance_test)$Var2)
-parameter_matrix <- matrix(NA, nrow = 100, ncol = 2)
+parameter_matrix <- matrix(NA, nrow = 81, ncol = 2)
 parameter_matrix[,1] <- data_y[,2]
 parameter_matrix[,2] <- data_y[,1]
 image_size <- 25

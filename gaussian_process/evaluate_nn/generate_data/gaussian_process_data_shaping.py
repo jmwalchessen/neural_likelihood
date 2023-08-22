@@ -1,14 +1,14 @@
 import json
 import numpy as np
 
-#Process json files (one per parameter from the 10 by 10 grid over the parameter space for evaluation) into
+#Process json files (one per parameter from the 9 by 9 grid over the parameter space for evaluation) into
 #numpy matrices. Specifically, the function outputs three matrices--one each for spatial fields, the corresponding
 #parameters which produced the spatial fields, and the log likelihood fields for the spatial fields.
 #function parameter: 
     #folder_name: location of the json files
     #file_name: name of json files
     #file_numbers: list of numbers of the json files (the total number of json files is equal to the number of parameters)
-    #number_of_parameters: the total parameters to be evaluated (in our case, 100 for 10 by 10 grid over the 
+    #number_of_parameters: the total parameters to be evaluated (in our case, 81 for 9 by 9 grid over the 
                         #parameter space)
     #number_of_replications: number of realizations of the Gaussian process in each json file (per parameter)
     #image_size: the square root of the number of spatial observations at which the Gaussian Process is observed,
@@ -37,7 +37,7 @@ def process_json_files_into_numpy_matrices_for_evaluating_nn(folder_name, file_n
         
     return images, parameters, log_likelihood_fields
 
-#Process json files (one per parameter from the 10 by 10 grid over the parameter space for evaluation in the multiple 
+#Process json files (one per parameter from the 9 by 9 grid over the parameter space for evaluation in the multiple 
 # realization case) into numpy matrices. Specifically, the function outputs three matrices--one each for spatial 
 # fields, the corresponding parameters which produced the spatial fields, and the log likelihood fields for the 
 # spatial fields.
@@ -45,7 +45,7 @@ def process_json_files_into_numpy_matrices_for_evaluating_nn(folder_name, file_n
     #folder_name: location of the json files
     #file_name: name of json files
     #file_numbers: list of numbers of the json files (the total number of json files is equal to the number of parameters)
-    #number_of_parameters: the total parameters to be evaluated (in our case, 100 for 10 by 10 grid over the 
+    #number_of_parameters: the total parameters to be evaluated (in our case, 81 for 9 by 9 grid over the 
                         #parameter space)
     #number_of_replications: number of realizations of the Gaussian process in each json file (per parameter)
     #image_size: the square root of the number of spatial observations at which the Gaussian Process is observed,
@@ -81,9 +81,9 @@ def process_json_files_into_numpy_matrices_for_evaluating_nn_multiple_realizatio
 number_of_replications = 200
 image_size = 25
 folder_name = "data/25_by_25/ll/single/reps/" + str(number_of_replications)
-file_name = "data_10_by_10_density_25_by_25_image_" + str(number_of_replications)
-file_numbers = [i for i in range(1, 101)]
-number_of_parameters = 100
+file_name = "data_9_by_9_density_25_by_25_image_" + str(number_of_replications)
+file_numbers = [i for i in range(1, 82)]
+number_of_parameters = 81
 parameter_length = 40
 images, parameters, log_likelihood_fields = process_json_files_into_numpy_matrices_for_evaluating_nn(folder_name, file_name,
                                                                                                       file_numbers, 
@@ -93,11 +93,11 @@ images, parameters, log_likelihood_fields = process_json_files_into_numpy_matric
                                                                                                       parameter_length)
 
 image_file_name = ("data/25_by_25/ll/single/reps/" + str(number_of_replications) + 
-                   "/evaluation_images_10_by_10_density_25_by_25_" + str(number_of_replications) + ".npy")
+                   "/evaluation_images_9_by_9_density_25_by_25_" + str(number_of_replications) + ".npy")
 np.save(image_file_name, images)
 log_likelihood_file_name = ("data/25_by_25/ll/single/reps/" + str(number_of_replications) + 
-                   "/evaluation_ll_fields_10_by_10_density_25_by_25_" + str(number_of_replications) + ".npy")
+                   "/evaluation_ll_fields_9_by_9_density_25_by_25_" + str(number_of_replications) + ".npy")
 np.save(log_likelihood_file_name, log_likelihood_fields)
 parameters_file_name = ("data/25_by_25/ll/single/reps/" + str(number_of_replications) + 
-                   "/evaluation_parameters_10_by_10_density_25_by_25_" + str(number_of_replications) + ".npy")
+                   "/evaluation_parameters_9_by_9_density_25_by_25_" + str(number_of_replications) + ".npy")
 np.save(parameters_file_name, parameters)

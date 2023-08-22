@@ -98,18 +98,19 @@ inner_for_loop_in_log_likelihood_field_with_cholesky <- function(irep, ipred, da
 #Produce the exact log likelihood surface using Cholesky factorization and parallelization
 #parameters:
   #irep: number that refers to the realization
-  #ipred: number that refers to the parameter on the 10 by 10 parameter grid
-  #data: evaluation data (200 realizations of a GP for 10 by 10 parameter grid)
-  #possible_variances: the variances on the 10 by 10 parameter grid
-  #possible_length_scales: length scales on the 10 by 10 parameter grid
+  #ipred: number that refers to the parameter on the 9 by 9 parameter grid
+  #data: evaluation data (200 realizations of a GP for 9 by 9 parameter grid)
+  #possible_variances: the variances on the 9 by 9 parameter grid
+  #possible_length_scales: length scales on the 9 by 9 parameter grid
   #n: the number of observations
   #grid_dataframe: dataframe of the latitude and longitudes for the observations
-compute_cholesky_log_likelihood_field_with_parallelization <- function(irep, ipred, data, possible_variances, possible_length_scales,
-                                                                                    n, grid_dataframe)
+compute_cholesky_log_likelihood_field_with_parallelization <- function(irep, ipred, data, possible_variances,
+                                                                       possible_length_scales, n, grid_dataframe)
 {
   likelihoods <- matrix(0, nrow = length(possible_variances), ncol = length(possible_length_scales))
   outputs <- parSapply(cluster, 1:length(possible_length_scales), function(i)
-  {inner_for_loop_in_log_likelihood_field_with_cholesky(irep, ipred, data, possible_length_scales[i], possible_variances, n, grid_dataframe)})
+  {inner_for_loop_in_log_likelihood_field_with_cholesky(irep, ipred, data, possible_length_scales[i],
+                                                        possible_variances, n, grid_dataframe)})
   return(outputs)
 }
 
@@ -119,8 +120,9 @@ np <- import("numpy")
 image_size <- 25
 image_name <- paste(paste(as.character(image_size), "by", sep = "_"), as.character(image_size), sep = "_")
 local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process"
-numpy_file_name <- paste(paste(paste(paste(local_folder, "evaluate_nn/generate_data/data", sep = "/"), image_name, sep = "/"), 
-                               "single/reps/200", sep = "/"), "evaluation_images_10_by_10_density_25_by_25_200.npy", sep = "/")
+numpy_file_name <- paste(paste(paste(paste(local_folder, "evaluate_nn/generate_data/data", sep = "/"),
+                   image_name, sep = "/"), 
+                   "single/reps/200", sep = "/"), "evaluation_images_9_by_9_density_25_by_25_200.npy", sep = "/")
 
 evaluation_data <- np$load(numpy_file_name)
 
@@ -132,7 +134,7 @@ names(grid_dataframe) <- c("longitude", "latitude")
 possible_length_scales <- seq(.05, 2, .05)
 possible_variances <- seq(.05, 2, .05)
 number_of_replicates <- 50
-ipred <- 34
+ipred <- 31
 time_array <- array(0, dim = number_of_replicates)
 
 #compute exact log likelihood surfaces using all cores on laptop
@@ -153,5 +155,5 @@ for(irep in 1:number_of_replicates)
 }
 
 numpy_file_name <- paste(paste("data", image_name, sep = "/"),
-                         "exact_likelihood_surface_time_with_parallelization_on_laptop_33.npy", sep = "/")
+                         "exact_likelihood_surface_time_with_parallelization_on_laptop_30.npy", sep = "/")
 np$save(numpy_file_name, time_array)

@@ -48,12 +48,12 @@ def produce_psi_field(possible_length_scales, possible_variances, image, n):
 n = 25
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + str(n) + "_by_" + str(n) + 
-                  "/single/reps/200/evaluation_images_10_by_10_density_25_by_25_200.npy")
+                  "/single/reps/200/evaluation_images_9_by_9_density_25_by_25_200.npy")
 evaluation_images = np.load(data_file_name)
 possible_length_scales = [.05*i for i in range(1, 41)]
 possible_variances = [.05*i for i in range(1, 41)]
 
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 200
 
 image_size = 25
@@ -83,5 +83,5 @@ for i in range(0, number_of_parameters):
 
 
 psi_field_file = ("data/" + image_name + "/" + version +
-"/uncalibrated/single/reps/200/uncalibrated_neural_likelihood_surfaces_10_by_10_density_" + image_name + "_image_200.npy")
+"/uncalibrated/single/reps/200/uncalibrated_neural_likelihood_surfaces_9_by_9_density_" + image_name + "_image_200.npy")
 np.save(psi_field_file, psi_fields)
