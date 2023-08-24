@@ -87,7 +87,7 @@ multi_number = 5
 image_name = str(n) + "_by_" + str(n)
 number_of_parameters = 81
 number_of_reps = 200
-local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
+local_folder = "/home/julia/Desktop/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/multi/"+ str(multi_number) + "/reps/" + str(number_of_reps) + 
                   "/evaluation_images_9_by_9_density_" + image_name + "_multi_" + 
