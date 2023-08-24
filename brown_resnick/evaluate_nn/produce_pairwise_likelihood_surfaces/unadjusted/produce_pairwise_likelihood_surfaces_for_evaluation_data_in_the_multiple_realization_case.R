@@ -12,9 +12,9 @@ image_size <- 25
 image_name <- paste(paste(as.character(image_size), "by", sep = "_"), as.character(image_size), sep = "_")
 spatial_domain_size <- 20
 distance_constraint <- 2
-ranges = seq(.2, 2, .2)
-smooths = seq(.2, 2, .2)
-number_of_parameters <- 100
+ranges = seq(.2, 1.8, .2)
+smooths = seq(.2, 1.8, .2)
+number_of_parameters <- 81
 number_of_multiple_realizations <- 5
 
 #The longitude and latitudes for the observations on the lattice over the spatial domain
@@ -28,7 +28,7 @@ home_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelih
 evaluation_images_file_name <- paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(home_folder, "evaluate_nn/generate_data/data", sep = "/"), 
                                                                                            image_name, sep = "/"), "multi", sep = "/"), as.character(number_of_multiple_realizations), sep = "/"),
                                                                          "reps/200", sep = "/"), 
-                                                                   "evaluation_images_10_by_10_density", sep = "/"), image_name, sep = "_"), "multi", sep = "_"), 
+                                                                   "evaluation_images_9_by_9_density", sep = "/"), image_name, sep = "_"), "multi", sep = "_"), 
                                                  as.character(number_of_multiple_realizations), sep = "_"),
                                            as.character(number_of_replications), sep = "_"), "npy", sep = ".")
 
@@ -59,7 +59,7 @@ smooth_grid <- seq(.05, 2, .05)
 #parameters:
 #coordinates_matrix: the coordinates for the observations on the grid over the spatial domain
 #flattened_evaluation_images_per_parameter: the flattened spatial fields generated using a particular parameter 
-#on the 10 by 10 grid over the parameter space
+#on the 9 by 9 grid over the parameter space
 #weights: the weights (1 or 0) that determine whether to include the pair of observations in the pairwise likelihood
 #irep: the replication number for the particular spatial field for which we want to produce a pairwise likelihood surface 
 extract_pairwise_likelihood_function_via_fitmaxstab <- function(coordinates_matrix, flattened_evaluation_images_per_parameter, weights, irep)
@@ -79,7 +79,7 @@ extract_pairwise_likelihood_function_via_fitmaxstab <- function(coordinates_matr
 #a specified parameter on the grid over the parameter space (taken from the evaluation data)
 #parameters:
 #ipred: the row in the parameter matrix (data_y) which references the parameter of interest
-#grid: the grid over the parameter space (density 10 by 10)
+#grid: the grid over the parameter space (density 9 by 9)
 #range_grid: the range values on the grid over the parameter space
 #smooth_grid: the smooth values on the grid over the parameter space
 #flattened_evaluation_images: the evaluation images from the evaluation data that are already flattened from 2 dimensions to one
@@ -115,7 +115,7 @@ generate_pairwise_likelihood_surfaces_per_parameter <- function(ipred, grid, ran
   file_name <- paste(paste(paste(paste(paste(paste(paste(paste
               (paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(local_folder, "data", sep = "/"), image_name, sep = "/"), "dist", sep = "/"), 
                as.character(distance_constraint), sep = "_"), sep = "/"), "multi", sep = "/"), as.character(number_of_multiple_realizations), sep = "/"),
-               sep = "/"), "reps", sep = "/"), as.character(number_of_replications), sep = "/"), "pairwise_likelihood_surfaces_10_by_10_density", sep = "/"),
+               sep = "/"), "reps", sep = "/"), as.character(number_of_replications), sep = "/"), "pairwise_likelihood_surfaces_9_by_9_density", sep = "/"),
               image_name, sep = "_"), "image", sep = "_"), "multi", sep = "_"), as.character(number_of_multiple_realizations), sep = "_"), 
               as.character(number_of_replications), sep = "_"), as.character(ipred), sep = "_"), "npy", sep = ".")
   

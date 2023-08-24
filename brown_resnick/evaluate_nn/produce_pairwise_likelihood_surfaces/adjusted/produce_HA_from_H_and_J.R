@@ -5,9 +5,8 @@ library(reticulate)
 
 h <- .05
 h_in_name <- "5e02"
-range_test = seq(.2, 2, .2)
-smooth_test = seq(.2, 2, .2)
-smooth_test[10] <- 1.99
+range_test = seq(.2, 1.8, .2)
+smooth_test = seq(.2, 1.8, .2)
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
 dist_constraint <- 2
 
@@ -40,7 +39,7 @@ produce_HA_per_parameter <- function(ipred, local_folder, dist_constraint)
   }
 }
 
-n_params <- 100
+n_params <- 81
 
 for (ipred in 1:n_params)
   {

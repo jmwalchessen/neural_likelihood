@@ -52,12 +52,12 @@ image_name = str(n) + "_by_" + str(n)
 number_of_replications = 200
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
-                  "/single/reps/" + str(number_of_replications) + "/evaluation_images_10_by_10_density_" 
+                  "/single/reps/" + str(number_of_replications) + "/evaluation_images_9_by_9_density_" 
                   + image_name + "_" + str(number_of_replications) + ".npy")
 evaluation_images = np.load(data_file_name)
 possible_ranges = [.05*i for i in range(1, 41)]
 possible_smooths = [.05*i for i in range(1, 41)]
-number_of_parameters = 100
+number_of_parameters = 81
 
 #Load the nn
 json_file_name = (local_folder + "nn/models/" + image_name + "/" + version +
@@ -83,6 +83,7 @@ for i in range(0, number_of_parameters):
 
 
 psi_field_file = ("data/" + image_name + "/" + version +
-"/uncalibrated/single/reps/" + str(number_of_replications) + "uncalibrated_neural_likelihood_surfaces_10_by_10_density_" 
+"/uncalibrated/single/reps/" + str(number_of_replications) +
+"uncalibrated_neural_likelihood_surfaces_9_by_9_density_" 
 + image_name + "_image_" + str(number_of_replications) + ".npy")
 np.save(psi_field_file, psi_fields)

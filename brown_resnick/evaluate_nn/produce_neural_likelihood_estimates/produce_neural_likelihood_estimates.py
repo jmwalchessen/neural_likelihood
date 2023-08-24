@@ -20,7 +20,7 @@ def produce_max_psi_parameters(possible_ranges, possible_smooths, psi_field):
     return np.array([max_range, max_smooth])
 
 
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 200
 parameter_length = 40
 possible_smooths = [.05*i for i in range(0, 41)]
@@ -33,13 +33,13 @@ multi_number = 5
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 multi_psi_fields_file = (local_folder + "evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + "/" + 
                          version + "/uncalibrated/multi/" + str(multi_number) + "/reps/" + str(number_of_reps) + 
-                         "/uncalibrated_neural_likelihood_surfaces_10_by_10_density_" + image_name +
+                         "/uncalibrated_neural_likelihood_surfaces_9_by_9_density_" + image_name +
                          "_multi_" + str(multi_number)+ "_" + str(number_of_reps) + ".npy")
 multi_psi_fields = np.load(multi_psi_fields_file)
 
 single_psi_fields_file = (local_folder + "evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + 
                           "/" + version + "/uncalibrated/single/reps/" + str(number_of_reps) + 
-                          "/uncalibrated_neural_likelihood_surfaces_10_by_10_density_" + image_name +  "_image_" 
+                          "/uncalibrated_neural_likelihood_surfaces_9_by_9_density_" + image_name +  "_image_" 
                           + str(number_of_reps) + ".npy")
 single_psi_fields = np.load(single_psi_fields_file)
 
@@ -55,7 +55,7 @@ for i in range(0, number_of_parameters):
 
 single_max_params_file = (local_folder + "evaluate_nn/produce_neural_likelihood_estimates/data/" + image_name 
                           + "/" + version + "/single/reps/" + str(number_of_reps) + 
-                          "/neural_likelihood_estimators_10_by_10_density_" + image_name + "_" + str(number_of_reps)
+                          "/neural_likelihood_estimators_9_by_9_density_" + image_name + "_" + str(number_of_reps)
                             + ".npy")
 np.save(single_max_params_file, single_max_params)
 
@@ -70,6 +70,6 @@ for i in range(0, number_of_parameters):
 
 multi_max_params_file = (local_folder + "evaluate_nn/produce_neural_likelihood_estimates/data/" + 
                          image_name + "/" + version + "/multi/" + str(multi_number) + "/reps/" + 
-                          str(number_of_reps) + "/neural_likelihood_estimators_10_by_10_density_" + image_name 
+                          str(number_of_reps) + "/neural_likelihood_estimators_9_by_9_density_" + image_name 
                           + "_multi_" + str(multi_number) + "_" + str(number_of_reps) + ".npy")
 np.save(multi_max_params_file, multi_max_params)

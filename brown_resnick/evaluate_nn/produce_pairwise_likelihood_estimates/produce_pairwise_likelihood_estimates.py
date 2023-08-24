@@ -6,13 +6,13 @@ image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
 number_of_reps = 200
 multi_number = 5
-distance_constraint = 1
+distance_constraint = 5
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 pairwise_likelihood_surfaces_in_single_realization_case_file_name = (local_folder + 
                                                 "evaluate_nn/produce_pairwise_likelihood_surfaces/unadjusted/data/"
                                                 + image_name + "/dist_" + str(distance_constraint) + 
                                                 "/single/reps/" + str(number_of_reps) + 
-                                                "/pairwise_likelihood_surfaces_10_by_10_density_" 
+                                                "/pairwise_likelihood_surfaces_9_by_9_density_" 
                                                 + image_name + "_image_" + str(number_of_reps)
                                                 + ".npy")
 single_pairwise_likelihood_fields = np.load(pairwise_likelihood_surfaces_in_single_realization_case_file_name)
@@ -20,7 +20,7 @@ pairwise_likelihood_surfaces_in_multiple_realization_case_file_name = (local_fol
                                                 "evaluate_nn/produce_pairwise_likelihood_surfaces/unadjusted/data/"
                                                 + image_name + "/dist_" + str(distance_constraint) + "/multi/" 
                                                 + str(multi_number) + "/reps/" + str(number_of_reps) + 
-                                                "/pairwise_likelihood_surfaces_10_by_10_density_" + image_name +
+                                                "/pairwise_likelihood_surfaces_9_by_9_density_" + image_name +
                                                 "_image_multi_" + str(multi_number) + "_" + str(number_of_reps)
                                                 + ".npy")
 multi_pairwise_likelihood_fields = np.load(pairwise_likelihood_surfaces_in_multiple_realization_case_file_name)
@@ -34,7 +34,7 @@ def produce_max_pairwise_likelihood_parameters(possible_ranges, possible_smooths
 
     return np.array([max_range, max_smooth])
 
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 200
 possible_ranges = [.05*i for i in range(1, 41)]
 possible_smooths = [.05*i for i in range(1, 41)]
@@ -52,11 +52,11 @@ for ipred in range(0, number_of_parameters):
 
 single_max_params_file_name = ("data/" + image_name + "/dist_" + str(distance_constraint) +
                    "/single/reps/" + str(number_of_reps) +
-                   "/evaluation_pairwise_likelihood_estimators_10_by_10_image_" + 
+                   "/evaluation_pairwise_likelihood_estimators_9_by_9_image_" + 
                    image_name + "_" + str(number_of_reps) + ".npy")
 multi_max_params_file_name = ("data/" + image_name + "/dist_" + str(distance_constraint) + 
                    "/multi/" + str(multi_number) + "/reps/" + str(number_of_reps) +
-                   "/evaluation_pairwise_likelihood_estimators_10_by_10_image_" + 
+                   "/evaluation_pairwise_likelihood_estimators_9_by_9_image_" + 
                    image_name + "_multi_" + str(multi_number) + "_" + str(number_of_reps) + ".npy")
 np.save(single_max_params_file_name, single_max_params)
 np.save(multi_max_params_file_name, multi_max_params)

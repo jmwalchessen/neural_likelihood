@@ -8,8 +8,8 @@ adjusted_pairwise_likelihood_surfaces_file_name <- paste(paste(paste(paste(local
                                                                            as.character(dist_constraint), sep = "_"), matrix_type, sep = "/"),
                                                                "adjusted_pairwise_likelihood_surfaces_200", sep = "/")
 
-ipreds <- c(1:60,62:70,72:80,82:100)
-adjusted_pairwise_likelihood_surfaces <- array(0, dim = c(100,200,40,40))
+ipreds <- c(1:54,56:63,65:72,74:81)
+adjusted_pairwise_likelihood_surfaces <- array(0, dim = c(81,200,40,40))
 for(ipred in ipreds)
   {
     current_adjusted_pairwise_likelihood_surfaces_file_name <- paste(paste(adjusted_pairwise_likelihood_surfaces_file_name, as.character(ipred), sep = "_"),

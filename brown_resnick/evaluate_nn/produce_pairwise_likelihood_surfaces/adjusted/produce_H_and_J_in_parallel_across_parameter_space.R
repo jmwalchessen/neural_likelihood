@@ -5,28 +5,27 @@ library(parallel)
 library(reticulate)
 
 
-#Information necessary to load the spatial field realizations for each parameter on the 10 by 10 grid over the parameter space
+#Information necessary to load the spatial field realizations for each parameter on the 9 by 9 grid over the parameter space
 np <- import("numpy")
 folder_name = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/evaluate_nn/produce_pairwise_likelihood_surfaces/adjusted/data/simulated_data/25_by_25"
 #compile spatial image numpy matrices together
-spatial_images_file <- paste(folder_name, "spatial_images_10_by_10_density", sep = "/")
+spatial_images_file <- paste(folder_name, "spatial_images_9_by_9_density", sep = "/")
 local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
-n_params <- 100
+n_params <- 81
 n_reps <- 5000
 image_size <- 25
 
 #Construct a matrix of the parameters on the 10 by 10 grid over the parameter space
-range_test = seq(.2, 2, .2)
-smooth_test = seq(.2, 2, .2)
-smooth_test[10] <- 1.99
+range_test = seq(.2, 1.8, .2)
+smooth_test = seq(.2, 1.8, .2)
 
 data_y = cbind(expand.grid(range_test, smooth_test)$Var1,
                expand.grid(range_test, smooth_test)$Var2)
-parameter_matrix <- matrix(NA, nrow = 100, ncol = 2)
+parameter_matrix <- matrix(NA, nrow = 81, ncol = 2)
 parameter_matrix[,1] <- data_y[,1]
 parameter_matrix[,2] <- data_y[,2]
 
-#This function computes estimate of H and J per parameter on the 10 by 10 grid
+#This function computes estimate of H and J per parameter on the 9 by 9 grid
   #function parameters:
     #ipred: the index of the parameter in the parameter_matrix
     #spatial_images_file_name: name of the file for the numpy matrix of spatial fields for the given parameter
@@ -55,7 +54,7 @@ compute_H_and_J_per_parameter <- function(ipred, spatial_images_file_name, theta
 h <- .05
 dist_constraint <- 2
 m <- 5000
-number_of_parameters <- 100
+number_of_parameters <- 81
 
 #Use parallel computing to compute each H and J per parameter across 10 by 10 grid
 cores <- (((detectCores(logical = TRUE))))

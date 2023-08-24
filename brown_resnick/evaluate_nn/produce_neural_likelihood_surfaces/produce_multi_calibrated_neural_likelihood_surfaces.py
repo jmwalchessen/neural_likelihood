@@ -60,7 +60,8 @@ def produce_calibrated_psi_field(possible_ranges, possible_smooths, image, n):
 
     return calibrated_psi_field
 
-#Produce the calibrated neural likelihood surface in the multiple realization case for the parameter grid over the parameter space
+#Produce the calibrated neural likelihood surface in the multiple realization case for the parameter grid
+#over the parameter space
 #function parameters:
     #possible_ranges: range values on the parameter grid
     #possible_smooths: variance values on the parameter grid
@@ -84,12 +85,12 @@ def produce_calibrated_psi_field_for_multiple_realizations(possible_ranges, poss
 n = 25
 multi_number = 5
 image_name = str(n) + "_by_" + str(n)
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 200
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/multi/"+ str(multi_number) + "/reps/" + str(number_of_reps) + 
-                  "/evaluation_images_10_by_10_density_" + image_name + "_multi_" + 
+                  "/evaluation_images_9_by_9_density_" + image_name + "_multi_" + 
                   str(multi_number) + "_" + str(number_of_reps) + ".npy")
 evaluation_images = np.load(data_file_name)
 possible_ranges = [.05*i for i in range(1, 41)]
@@ -129,6 +130,6 @@ for i in range(0, number_of_parameters):
 
 calibrated_psi_field_file = (local_folder + "/evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + 
                   "/" + version + "/calibrated/multi/" + str(multi_number) + "/reps/" + str(number_of_reps) + 
-                  "/calibrated_neural_likelihood_surfaces_10_by_10_density_" + image_name + "_multi_" + 
+                  "/calibrated_neural_likelihood_surfaces_9_by_9_density_" + image_name + "_multi_" + 
                   str(multi_number) + "_" + str(number_of_reps) + ".npy")
 np.save(calibrated_psi_field_file, calibrated_psi_fields)

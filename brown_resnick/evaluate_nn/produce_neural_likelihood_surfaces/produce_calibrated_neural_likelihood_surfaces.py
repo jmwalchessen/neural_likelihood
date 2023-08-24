@@ -64,11 +64,11 @@ def produce_calibrated_psi_field(possible_ranges, possible_smooths, image, n):
 #Load the evaluation images
 n = 25
 image_name = str(n) + "_by_" + str(n)
-number_of_parameters = 100
+number_of_parameters = 81
 number_of_reps = 200
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
-                  "/single/reps/" + str(number_of_reps) + "/evaluation_images_10_by_10_density_" + 
+                  "/single/reps/" + str(number_of_reps) + "/evaluation_images_9_by_9_density_" + 
                   image_name + "_" + str(number_of_reps) + ".npy")
 evaluation_images = np.load(data_file_name)
 possible_ranges = [.05*i for i in range(1, 41)]
@@ -106,6 +106,6 @@ for i in range(0, number_of_parameters):
 
 
 calibrated_psi_field_file = ("data/" + image_name + "/" + version +
-"/calibrated/single/reps/" + str(number_of_reps) + "/calibrated_neural_likelihood_surfaces_10_by_10_density_" 
+"/calibrated/single/reps/" + str(number_of_reps) + "/calibrated_neural_likelihood_surfaces_9_by_9_density_" 
 + image_name + "_image_" + str(number_of_reps) + ".npy")
 np.save(calibrated_psi_field_file, calibrated_psi_fields)

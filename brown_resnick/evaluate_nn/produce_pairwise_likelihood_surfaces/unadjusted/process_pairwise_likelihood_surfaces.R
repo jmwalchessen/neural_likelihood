@@ -8,22 +8,22 @@ image_size <- 25
 image_name <- paste(paste(as.character(image_size), "by", sep = "_"), as.character(image_size), sep = "_")
 spatial_domain_size <- 20
 distance_constraint <- 2
-ranges = seq(.2, 2, .2)
-smooths = seq(.2, 2, .2)
-number_of_parameters <- 100
+ranges = seq(.2, 1.8, .2)
+smooths = seq(.2, 1.8, .2)
+number_of_parameters <- 81
 number_of_multiple_realizations <- 5
 parameter_size <- 40
 
 partial_single_pairwise_likelihood_surfaces_file_name <- paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(local_folder, 
                                                 "data", sep = "/"), image_name, sep = "/"), "dist", sep = "/"), as.character(distance_constraint), sep = "_"), 
                                                 sep = "/"), "single/reps", sep = "/"), as.character(number_of_replications), sep = "/"), 
-                                                "pairwise_likelihood_surfaces_10_by_10_density", sep = "/"), image_name, sep = "_"), "image", sep = "_"),
+                                                "pairwise_likelihood_surfaces_9_by_9_density", sep = "/"), image_name, sep = "_"), "image", sep = "_"),
                                                 as.character(number_of_replications), sep = "_")
 partial_multi_pairwise_likelihood_surfaces_file_name <- paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(paste(
                                                 paste(paste(paste(paste(local_folder, "data", sep = "/"), image_name, sep = "/"), "dist", sep = "/"), 
                                                 as.character(distance_constraint), sep = "_"), sep = "/"), "multi", sep = "/"), 
                                                 as.character(number_of_multiple_realizations), sep = "/"), sep = "/"), "reps", sep = "/"),
-                                                as.character(number_of_replications), sep = "/"), "pairwise_likelihood_surfaces_10_by_10_density", sep = "/"),
+                                                as.character(number_of_replications), sep = "/"), "pairwise_likelihood_surfaces_9_by_9_density", sep = "/"),
                                                 image_name, sep = "_"), "image", sep = "_"), "multi", sep = "_"), as.character(number_of_multiple_realizations),
                                                 sep = "_"), as.character(number_of_replications), sep = "_")
 np <- import("numpy")

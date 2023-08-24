@@ -10,7 +10,7 @@ library(ramify)
 #parameters:
 #coordinates_matrix: the coordinates for the observations on the grid over the spatial domain
 #flattened_evaluation_image: the flattened spatial field 
-#on the 10 by 10 grid over the parameter space
+#on the 9 by 9 grid over the parameter space
 #weights: the weights (1 or 0) that determine whether to include the pair of observations in the pairwise likelihood
 #irep: the replication number for the particular spatial field for which we want to produce a pairwise likelihood surface 
 extract_pairwise_likelihood_function_via_fitmaxstab <- function(coordinates_matrix, flattened_evaluation_image, weights)
@@ -35,7 +35,7 @@ extract_pairwise_likelihood_function_via_fitmaxstab <- function(coordinates_matr
 #parameters:
 #ipred: the row in the parameter matrix (data_y) which references the parameter of interest
 #irep: the number which specifies which spatial field to use
-#grid: the grid over the parameter space (density 10 by 10)
+#grid: the grid over the parameter space (density 9 by 9)
 #range_grid: the range values on the grid over the parameter space
 #smooth_grid: the smooth values on the grid over the parameter space
 #flattened_evaluation_images: the evaluation images from the evaluation data that are already flattened from 2 dimensions to one
@@ -106,8 +106,8 @@ image_size <- 25
 image_name <- paste(paste(as.character(image_size), "by", sep = "_"), as.character(image_size), sep = "_")
 spatial_domain_size <- 20
 distance_constraint <- 1
-evaluation_ranges <- seq(.2, 2, .2)
-evaluation_smooths <- seq(.2, 2, .2)
+evaluation_ranges <- seq(.2, 1.8, .2)
+evaluation_smooths <- seq(.2, 1.8, .2)
 
 #Latitudes and longitudes for observations on the spatial domain
 x <- y <- seq(0, spatial_domain_size, length = image_size)
@@ -120,7 +120,7 @@ parameter_matrix = cbind(expand.grid(evaluation_ranges, evaluation_smooths)$Var1
 #Load evaluation images
 local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
 evaluation_images_file <- paste(paste(paste(paste(paste(paste(local_folder, "evaluate_nn/generate_data/data", sep = "/"), 
-                                      image_name, sep = "/"), "single/reps/200", sep = "/"), "evaluation_images_10_by_10_density",
+                                      image_name, sep = "/"), "single/reps/200", sep = "/"), "evaluation_images_9_by_9_density",
                                       sep = "/"), image_name, sep = "_"), "200.npy", sep = "_")
 evaluation_images <- np$load(evaluation_images_file)
 range_grid <- seq(.05, 2, .05)
@@ -129,7 +129,7 @@ smooth_grid <- seq(.05, 2, .05)
 grid <- cbind(expand.grid(range_grid, smooth_grid)$Var1,
               expand.grid(range_grid, smooth_grid)$Var2)
 
-ipred <- 34
+ipred <- 31
 time_array <- matrix(0, nrow = number_of_replications)
 
 weights <- as.numeric(distance(coordinates_matrix) < distance_constraint) 

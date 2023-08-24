@@ -1,18 +1,16 @@
 #This script is for generating spatial field realizations for estimating H and J (described in Chandler and Bate and our paper). For each parameter on
-# a 10 by 10 grid over the parameter space, we generate number_of_reps = 5000 spatial field realizations which we will then use to compute H and J for
-# each of the 10 by 10 grid parameters.
+# a 9 by 9 grid over the parameter space, we generate number_of_reps = 5000 spatial field realizations which we will then use to compute H and J for
+# each of the 9 by 9 grid parameters.
 library(SpatialExtremes)
 library(reticulate)
 library(parallel)
 
-#Create the 10 by 10 grid over the parameter space
-range_test <- seq(.2, 2, .2)
-smooth_test <- seq(.2, 2, .2)
-range_test[10] <- 1.99
-smooth_test[10] <- 1.99
+#Create the 9 by 9 grid over the parameter space
+range_test <- seq(.2, 1.8, .2)
+smooth_test <- seq(.2, 1.8, .2)
 data_y = cbind(expand.grid(range_test, smooth_test)$Var1,
                expand.grid(range_test, smooth_test)$Var2)
-parameter_matrix <- matrix(NA, nrow = 100, ncol = 2)
+parameter_matrix <- matrix(NA, nrow = 81, ncol = 2)
 parameter_matrix[,1] <- data_y[,1]
 parameter_matrix[,2] <- data_y[,2]
 
@@ -22,7 +20,7 @@ n.size <- 20
 x <- y <- seq(0, n.size, length = n)
 coord <- expand.grid(x, y)
 #Determine the total number of parameters and the number of realizations generated per parameter
-number_of_parameters <- 100
+number_of_parameters <- 81
 number_of_reps <- 5000
 
 local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
@@ -46,7 +44,7 @@ generate_data_per_parameter <- function(ipred, parameter_matrix, number_of_reps,
   
 
   }
-  np_file <- paste(local_folder, paste(paste("evaluate_nn/produce_pairwise_likelihood_surfaces/adjusted/data/simulated_data/25_by_25/spatial_images_10_by_10_density",
+  np_file <- paste(local_folder, paste(paste("evaluate_nn/produce_pairwise_likelihood_surfaces/adjusted/data/simulated_data/25_by_25/spatial_images_9_by_9_density",
                                              as.character(ipred), sep = "_"), "5000.npy", sep = "_"), sep = "/")
   np <- import("numpy")
   np$save(np_file, simulated_data)

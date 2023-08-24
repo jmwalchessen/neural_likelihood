@@ -7,16 +7,15 @@ library(reticulate)
 h <- .05
 h_in_name <- "5e02"
 dist_constraint <- 2
-range_test = seq(.2, 2, .2)
-smooth_test = seq(.2, 2, .2)
-smooth_test[10] <- 1.99
+range_test = seq(.2, 1.8, .2)
+smooth_test = seq(.2, 1.8, .2)
 
 possible_ranges <- seq(.05, 2, .05)
 possible_smooths <- seq(.05, 2, .05)
 
 data_y = cbind(expand.grid(range_test, smooth_test)$Var1,
                expand.grid(range_test, smooth_test)$Var2)
-nrep <- 2
+nrep <- 200
 
 local_folder <- "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick"
 
@@ -24,13 +23,13 @@ np <- import("numpy")
 #Load the maximum pairwise likelihood estimates for the surfaces to speed up computation
 pwl_mle_file <- paste(paste(paste(paste(local_folder, "evaluate_nn/produce_pairwise_likelihood_estimates/data/25_by_25/dist", sep = "/"),
                                                  as.character(dist_constraint), sep = "_"), "single/reps/200", sep = "/"),
-                         "evaluation_pairwise_likelihood_estimators_10_by_10_image_25_by_25_200.npy", sep = "/")
+                         "evaluation_pairwise_likelihood_estimators_9_by_9_image_25_by_25_200.npy", sep = "/")
 
 pwl_mles <- np$load(pwl_mle_file)
 
 #Load the spatial field realizations for which we will be generating adjusted pairwise surfaces for
 evaluation_images_file_name <- paste(paste(local_folder, "evaluate_nn/generate_data/data/25_by_25/single/reps/200", sep = "/"), 
-                          "evaluation_images_10_by_10_density_25_by_25_200.npy", sep = "/")
+                          "evaluation_images_9_by_9_density_25_by_25_200.npy", sep = "/")
 evaluation_images <- np$load(evaluation_images_file_name)
 
 
@@ -89,7 +88,7 @@ produce_adjusted_pwl_surfaces_per_parameter <- function(ipred, nrep, spatial_fie
   
 }
 
-ipreds <- c(1:60, 62:70, 72:80, 82:100)
+ipreds <- c(1:54, 56:63, 65:72, 74:81)
 cores <- (((detectCores(logical = TRUE))))
 cluster <- makeCluster(cores)
 clusterCall(cluster, function() library(SpatialExtremes))
