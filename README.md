@@ -1,8 +1,14 @@
 # Neural Likelihood for Gaussian Processes
-Source code for "Neural Likelihood Surfaces for Spatial Processes with Computationally Intensive or Intractable Likelihoods" ([arxiv preprint](https://arxiv.org/abs/2305.04634))
+Source code for:
+
+J. Walchessen, A. Lenzi, and M. Kuusela. Neural Likelihood Surfaces for Spatial Processes with Computationally Intensive or Intractable Likelihoods. Preprint arXiv:2305.04634 [stat.ME], 2023. [arxiv preprint](https://arxiv.org/abs/2305.04634)
+
+Contact Julia Walchessen at jwalches@andrew.cmu.edu with any questions.
+
+
 
 ## Getting Started
-This document contains the code for each case study in "Neural Likelihood Surfaces for Spatial Processes with Computationally Intensive or Intractable Likelihoods." information about each folder and its contents in the repository. To quickly understand what a folder pertains to, please scroll down to find the information.
+This document contains the code for each case study in "Neural Likelihood Surfaces for Spatial Processes with Computationally Intensive or Intractable Likelihoods." Information about each folder and its contents in the repository. To quickly understand what a folder pertains to, please scroll down to find the information. **The package environment for this project is contained in requirements.txt**
 
 ## Gaussian Process
 

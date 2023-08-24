@@ -85,7 +85,7 @@ n = 25
 multi_number = 5
 image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
-local_folder = "/home/julia/Desktop/likelihood_free_inference/neural_likelihood/gaussian_process/"
+local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/gaussian_process/"
 data_file_name = (local_folder + "evaluate_nn/generate_data/data/" + image_name + 
                   "/multi/5/reps/200/evaluation_images_9_by_9_density_25_by_25_multi_5_200.npy")
 evaluation_images = np.load(data_file_name)
@@ -120,14 +120,14 @@ calibrated_psi_fields = np.zeros((number_of_parameters, number_of_reps, 40, 40))
 
 #Produce neural likelihood surfaces and parameter estimates for evaluation data
 for i in range(0, number_of_parameters):
-    for j in range(0, number_of_reps):
+    for j in range(0, 200):
 
         current_image = evaluation_images[i,j,:,:]
         calibrated_psi_fields[i,j,:,:] = produce_calibrated_psi_field_for_multiple_realizations(possible_length_scales, possible_variances, 
                                                                           current_image, n, multi_number)
 
 
-calibrated_psi_field_file = (local_folder + "/evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + 
+calibrated_psi_field_file = (local_folder + "evaluate_nn/produce_neural_likelihood_surfaces/data/" + image_name + 
                   "/" + version + "/calibrated/multi/5/reps/200/calibrated_neural_likelihood_surfaces_9_by_9_density_" 
                   + image_name + "_multi_5_200.npy")
 np.save(calibrated_psi_field_file, calibrated_psi_fields)

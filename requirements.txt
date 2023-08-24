@@ -1,0 +1,30 @@
+Our setup was linux operating system with Nvidia GPUs. All scripts are either python or R or jupyter notebook.
+
+python version: 3.11.2
+R version: 4.2.0
+
+Packages required:
+
+Python:
+
+json
+matplotlib
+numpy
+pickle
+ray
+scikit-learn
+scipy
+shapely
+tensorflow==2.12.0 (gpu version)
+time
+
+R:
+
+expm
+jsonlite
+lhs
+mvtnorm
+parallel
+ramify
+reticulate
+SpatialExtremes
