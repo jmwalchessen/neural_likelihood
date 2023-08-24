@@ -6,7 +6,7 @@ image_size = 25
 image_name = str(image_size) + "_by_" + str(image_size)
 number_of_reps = 200
 multi_number = 5
-distance_constraint = 5
+distance_constraint = 2
 local_folder = "/home/juliatest/Dropbox/likelihood_free_inference/neural_likelihood/brown_resnick/"
 pairwise_likelihood_surfaces_in_single_realization_case_file_name = (local_folder + 
                                                 "evaluate_nn/produce_pairwise_likelihood_surfaces/unadjusted/data/"
