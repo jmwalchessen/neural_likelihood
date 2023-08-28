@@ -45,9 +45,7 @@ This folder contains scripts to 1. generate training data for calibration and to
 
 To train the logistic regression model, we need training data of the following form (uncalibrated class probabilities (i.e. the output of the uncalibrated neural network $\hat{h}(y_{i,j},\theta_{i})$ for pairs of spatial field realizations $y_{i,j}$ and $\theta_{i}$; and the corresponding class $C_{i,j}$ the pair belongs to:
 
-$
-\{(\hat{h}(y_{i,j},\theta_{i}), C_{i,j})\}_{i\in [m],j\in [n]}
-$
+$\{(\hat{h}(y_{i,j},\theta_{i}), C_{i,j})\}_{i\in [m],j\in [n]}$
 
 where $n$ is the number of spatial field realizations $y$ per each of the $m$ sampled parameters. What we do to generate this training data is 1. simulate m = 3000 parameters &theta; from the parameter space 2. simulate n = 50 spatial field realizations y for each of the m = 3000 parameters &theta; 3. form data for class one and two using the previously simulated pairs of y and &theta; 4. put this data through the uncalibrated classifier/neural network to get out uncalibrated class probabilities 5. pair each uncalibrated class probability with the true class.
 
