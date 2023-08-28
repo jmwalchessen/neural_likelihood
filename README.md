@@ -45,9 +45,9 @@ This folder contains scripts to 1. generate training data for calibration and to
 
 To train the logistic regression model, we need training data of the following form (uncalibrated class probabilities (i.e. the output of the uncalibrated neural network $\hat{h}(y_{i,j},\theta_{i})$ for pairs of spatial field realizations $y_{i,j}$ and $\theta_{i}$; and the corresponding class $C_{i,j}$ the pair belongs to:
 
-$\begin{equation}
+$
 \{(\hat{h}(y_{i,j},\theta_{i}), C_{i,j})\}_{i\in [m],j\in [n]}
-\end{equation}$
+$
 
 where $n$ is the number of spatial field realizations $y$ per each of the $m$ sampled parameters. What we do to generate this training data is 1. simulate m = 3000 parameters &theta; from the parameter space 2. simulate n = 50 spatial field realizations y for each of the m = 3000 parameters &theta; 3. form data for class one and two using the previously simulated pairs of y and &theta; 4. put this data through the uncalibrated classifier/neural network to get out uncalibrated class probabilities 5. pair each uncalibrated class probability with the true class.
 
@@ -104,11 +104,11 @@ This folder contains scripts to generate neural likelihood surfaces for the eval
 
 #### produce_neural_likelihood_estimates
 
-This python scripts takes the neural likelihood fields for the evaluation data stored in the folder *evaluate_nn/produce_neural_likelihood_surfaces/data/25_by_25/final_version* and produces parameter estimates for both the single and multiple realization case. Since calibratin, does not affect the point estimates, we use the uncalibrated neural likelihood surfaces to produce the point estimates. The parameter estimates for the evaluation data are stored in the folder *evaluate_nn/produce_neural_likelihood_surfaces/data/25_by_25/final_version*.
+This python scripts takes the neural likelihood fields for the evaluation data stored in the folder *evaluate_nn/produce_neural_likelihood_surfaces/data/25_by_25/final_version* and produces parameter estimates for both the single and multiple realization case. Since calibration does not affect the point estimates, we use the uncalibrated neural likelihood surfaces to produce the point estimates. The parameter estimates for the evaluation data are stored in the folder *evaluate_nn/produce_neural_likelihood_surfaces/data/25_by_25/final_version*.
 
 #### timing_studies
 
-This is a timing study for the time to evaluate an exact or neural likelihood surface on average on the same fixed grid over the parameter space. There are two scripts--one for timing the exact likelihood surface and one for timing the neural likelihood surface. Both the neural and exact likelihood surfaces are computed using the full resources of my laptop which has an Intel Core i7-10875H processor with eight cores, each with two threads, and a NVIDIA GeForce RTX 2080 Super. To use the full resources of my laptop, parallel computing is utilized. The times to produce each of the 50 fields is stored in the folder * timing_studies/data/25_by_25*.
+This is a timing study for the time to evaluate an exact or neural likelihood surface on average on the same fixed grid over the parameter space. There are two scripts--one for timing the exact likelihood surface and one for timing the neural likelihood surface. Both the neural and exact likelihood surfaces are computed using the full resources of my laptop which has an Intel Core i7-10875H processor with eight cores, each with two threads, and a NVIDIA GeForce RTX 2080 Super. To use the full resources of my laptop, parallel computing is utilized. The times to produce each of the 50 fields is stored in the folder *timing_studies/data/25_by_25*.
 
 #### visualizations
 
@@ -162,11 +162,9 @@ This folder contains scripts to 1. generate training data for calibration and to
 
 ##### generate_training_data
 
-To train the logistic regression model, we need training data of the following form--uncalibrated class probabilities (i.e. the output of the uncalibrated neural network $\hat{h}(y_{i,j},\theta_{i})$) for pairs of spatial field realizations $y_{i,j}$ and $\theta_{i}$; and the corresponding class $C_{i,j}$ the pair belongs to:
+To train the logistic regression model, we need training data of the following form--uncalibrated class probabilities i.e. the output of the uncalibrated neural network $\hat{h}(y_{i,j},\theta_{i})$ for pairs of spatial field realizations $y_{i,j}$ and $\theta_{i}$ and the corresponding class $C_{i,j}$ the pair belongs to:
 
-$\begin{equation}
-\{(\hat{h}(y_{i,j},\theta_{i}), C_{i,j})\}_{i\in [m],j\in [n]}
-\end{equation}$
+$\{(\hat{h}(y_{i,j},\theta_{i}), C_{i,j})\}_{i\in [m],j\in [n]}$
 
 where $n$ is the number of spatial field realizations $y$ per each of the $m$ sampled parameters. What we do to generate this training data is 1. simulate m = 3000 parameters &theta; from the parameter space 2. simulate n = 50 spatial field realizations y for each of the m = 3000 parameters &theta; 3. form data for class one and two using the previously simulated pairs of y and &theta; 4. put this data through the uncalibrated classifier/neural network to get out uncalibrated class probabilities 5. pair each uncalibrated class probability with the true class.
 
