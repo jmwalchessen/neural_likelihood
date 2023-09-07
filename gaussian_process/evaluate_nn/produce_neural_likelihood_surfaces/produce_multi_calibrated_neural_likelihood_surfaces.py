@@ -73,7 +73,6 @@ def produce_calibrated_psi_field_for_multiple_realizations(possible_length_scale
     multi_psi_field = np.zeros((len(possible_variances), len(possible_length_scales)))
 
     for i in range(0, multi_number):
-
         image = image_realizations[i,:,:,:]
         multi_psi_field = (multi_psi_field + produce_calibrated_psi_field(possible_length_scales, possible_variances, image, n))
 
