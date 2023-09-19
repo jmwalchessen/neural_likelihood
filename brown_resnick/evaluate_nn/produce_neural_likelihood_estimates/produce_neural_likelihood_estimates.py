@@ -23,8 +23,8 @@ def produce_max_psi_parameters(possible_ranges, possible_smooths, psi_field):
 number_of_parameters = 81
 number_of_reps = 200
 parameter_length = 40
-possible_smooths = [.05*i for i in range(0, 41)]
-possible_ranges = [.05*i for i in range(0, 41)]
+possible_smooths = [.05*i for i in range(1, 41)]
+possible_ranges = [.05*i for i in range(1, 41)]
 image_size = 25
 image_name = (str(image_size) + "_by_" + str(image_size))
 version = "final_version"

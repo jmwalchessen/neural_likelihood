@@ -22,8 +22,8 @@ def produce_max_psi_parameters(possible_length_scales, possible_variances, psi_f
 number_of_parameters = 81
 number_of_reps = 200
 parameter_length = 40
-possible_variances = [.05*i for i in range(0, 41)]
-possible_length_scales = [.05*i for i in range(0, 41)]
+possible_variances = [.05*i for i in range(1, 41)]
+possible_length_scales = [.05*i for i in range(1, 41)]
 image_name = "25_by_25"
 version = "final_version"
 multi_number = 5
