@@ -109,3 +109,4 @@ calibrated_psi_field_file = ("data/" + image_name + "/" + version +
 "/calibrated/single/reps/" + str(number_of_reps) + "/calibrated_neural_likelihood_surfaces_9_by_9_density_" 
 + image_name + "_image_" + str(number_of_reps) + ".npy")
 np.save(calibrated_psi_field_file, calibrated_psi_fields)
+
