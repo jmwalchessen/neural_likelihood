@@ -1,7 +1,7 @@
 # Neural Likelihood for Gaussian Processes
 Source code for:
 
-J. Walchessen, A. Lenzi, and M. Kuusela. Neural Likelihood Surfaces for Spatial Processes with Computationally Intensive or Intractable Likelihoods. Preprint arXiv:2305.04634 [stat.ME], 2023. [arxiv preprint](https://arxiv.org/abs/2305.04634)
+J. Walchessen, A. Lenzi, and M. Kuusela (2024). Neural Likelihood Surfaces for Spatial Processes with Computationally Intensive or Intractable Likelihoods. Spatial Statistics 62, 1008484. [journal paper](https://www.sciencedirect.com/science/article/pii/S2211675324000393
 
 Contact Julia Walchessen at jwalches@andrew.cmu.edu with any questions.
 
